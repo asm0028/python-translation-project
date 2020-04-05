@@ -5,7 +5,7 @@ import re
 
 def vet_nucleotide_sequence(sequence):
     """
-    Return None if `sequence` is a valid RNA or DNA sequence, else raise exception. 
+    Return None if `sequence` is a valid RNA or DNA sequence, else raise exception.
 
     Parameters
     ----------
@@ -57,8 +57,8 @@ def vet_nucleotide_sequence(sequence):
     # any valid RNA and DNA sequence strings, respectively (and only strings of
     # RNA and DNA bases).
     # Read the docstring above for additional clues.
-    rna_pattern_str = r'AUCG'
-    dna_pattern_str = r'ATCG'
+    rna_pattern_str = r'[AUCGaucg]*'
+    dna_pattern_str = r'[ATCGatcg]*'
     ##########################################################################
 
     rna_pattern = re.compile(rna_pattern_str)
@@ -75,7 +75,7 @@ def vet_nucleotide_sequence(sequence):
 
 def vet_codon(codon):
     """
-    Return None if `codon` is a valid RNA codon, else raise an exception. 
+    Return None if `codon` is a valid RNA codon, else raise an exception.
 
     Parameters
     ----------
@@ -94,7 +94,7 @@ def vet_codon(codon):
     >>> vet_codon('AUG') == None
     True
 
-    lower-case is also vaild 
+    lower-case is also vaild
     >>> vet_codon('aug') == None
     True
 
@@ -293,4 +293,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
