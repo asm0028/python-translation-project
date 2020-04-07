@@ -211,8 +211,10 @@ def find_first_orf(sequence,
         format_list = ['{}' for codon in list]
         s = "|".join(format_list)
         return s.format(*list)
+    start_formatted = ListToFormattedString(start_codons)
+    stop_formatted = ListToFormattedString(stop_codons)
 
-    orf_pattern_str = r(?:{0})([AUGC]{{3}})*(?:{1})'.format(ListToFormattedString(start_codons), ListToFormattedString(stop_codons))
+    orf_pattern_str = r"(?:{0})([AUGC]{{3}})*(?:{1})".format(start_formatted, stop_formatted)
     ##########################################################################
 
     # Create the regular expression object
