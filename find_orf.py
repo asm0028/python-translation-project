@@ -207,7 +207,12 @@ def find_first_orf(sequence,
     # exactly. Change `orf_pattern_str` so that it will match any open reading
     # frame.
     # Read the docstring above for additional clues.
-    orf_pattern_str = r'AUG([AUGC]{3})*UAA'
+    def ListToFormattedString(list):
+        format_list = ['{}' for codon in list]
+        s = "|".join(format_list)
+        return s.format(*list)
+
+    orf_pattern_str = r(?:{0})([AUGC]{{3}})*(?:{1})'.format(ListToFormattedString(start_codons), ListToFormattedString(stop_codons))
     ##########################################################################
 
     # Create the regular expression object
